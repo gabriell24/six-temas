@@ -6,16 +6,17 @@ plugins {
     id 'java'
     id 'maven-publish'
     id 'org.springframework.boot' version '2.1.9.RELEASE'
+    id "org.sonarqube" version "3.0"
 }
 
 repositories {
     mavenLocal()
     maven {
-        url = 'http://maven.uqbar.org/releases'
+        url = 'https://maven.uqbar.org/releases'
     }
 
     maven {
-        url = 'http://maven.uqbar.org/snapshots'
+        url = 'https://maven.uqbar.org/snapshots'
     }
 
     maven {

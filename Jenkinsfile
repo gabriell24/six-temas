@@ -13,25 +13,33 @@ pipeline {
                 git 'https://github.com/gabriell24/six-temas.git'
 
                 //sh "chmod +x gradlew" ya lo hice en git
-                // Run Maven on a Unix agent.
                 sh "./gradlew build"
 
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
         }
+
         stage("Test") {
             steps {
                 // ejecutar con gradle la batería de pruebas y generar un reporte de resultado de las mismas
                 sh "./gradlew test"
-                sh "./gradlew sonarqube -Dsonar.host.url=localhost:9000"
             }
         }
+
         stage("Validate") {
             steps {
                 sh "./gradlew check"
             }
         }
+
+        stage("Analyze") {
+                // esta preparado para docker
+                sh "./gradlew sonarqube -Dsonar.host.url=http://sonarqube:9000"
+                // Step JaCoCo
+                sh "gradlew -i test jacocoTestReport"
+        }
+
         stage("Deploy") {
             steps {
                 //sh "chmod +x mvnw" ya lo hice en git

@@ -34,16 +34,19 @@ pipeline {
         }
 
         stage("Analyze") {
+            steps {
                 // esta preparado para docker
                 sh "./gradlew sonarqube -Dsonar.host.url=http://sonarqube:9000"
                 // Step JaCoCo
-                sh "gradlew -i test jacocoTestReport"
+                sh "./gradlew -i test jacocoTestReport"
+            }
         }
 
         stage("Deploy") {
             steps {
                 //sh "chmod +x mvnw" ya lo hice en git
                 sh "./mvnw spring-boot:run"
+                // acá habría que settear las credenciales de heroku, y subir el war
             }
         }
     }

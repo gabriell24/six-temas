@@ -1,0 +1,212 @@
+Started by user admin
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/PetClinic
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] git
+The recommended git tool is: git
+No credentials specified
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/gabriell24/six-temas.git # timeout=10
+Fetching upstream changes from https://github.com/gabriell24/six-temas.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.20.1'
+ > git fetch --tags --force --progress -- https://github.com/gabriell24/six-temas.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision 0ea5d19a65e700208cc5257719bca10d27f2b574 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 0ea5d19a65e700208cc5257719bca10d27f2b574 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D master # timeout=10
+ > git checkout -b master 0ea5d19a65e700208cc5257719bca10d27f2b574 # timeout=10
+Commit message: "jacoco"
+ > git rev-list --no-walk 52638080d029937078b8831841152f59df814ffd # timeout=10
+[Pipeline] sh
++ ./gradlew build
+Starting a Gradle Daemon (subsequent builds will be faster)
+> Task :compileJava
+> Task :processResources
+> Task :classes
+> Task :bootJar
+> Task :jar SKIPPED
+> Task :assemble
+> Task :compileTestJava
+> Task :processTestResources NO-SOURCE
+> Task :testClasses
+
+> Task :test
+2020-11-05 02:45:17.530  INFO 3475 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-05 02:45:17.533  INFO 3475 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-05 02:45:17.534  INFO 3475 --- [extShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-11-05 02:45:17.534  INFO 3475 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-05 02:45:17.534  INFO 3475 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-05 02:45:17.553  INFO 3475 --- [extShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-11-05 02:45:17.556  INFO 3475 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-05 02:45:17.558  INFO 3475 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-11-05 02:45:17.569  INFO 3475 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-11-05 02:45:17.747  INFO 3475 --- [extShutdownHook] org.ehcache.core.EhcacheManager          : Cache 'vets' removed from EhcacheManager.
+
+> Task :jacocoTestReport
+> Task :check
+> Task :build
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 6.0.
+Use '--warning-mode all' to show the individual deprecation warnings.
+See https://docs.gradle.org/5.4.1/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 1m 0s
+6 actionable tasks: 6 executed
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] sh
++ ./gradlew test
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+> Task :compileTestJava UP-TO-DATE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test UP-TO-DATE
+> Task :jacocoTestReport UP-TO-DATE
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 6.0.
+Use '--warning-mode all' to show the individual deprecation warnings.
+See https://docs.gradle.org/5.4.1/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 1s
+5 actionable tasks: 5 up-to-date
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Validate)
+[Pipeline] sh
++ ./gradlew check
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+> Task :compileTestJava UP-TO-DATE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test UP-TO-DATE
+> Task :jacocoTestReport UP-TO-DATE
+> Task :check UP-TO-DATE
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 6.0.
+Use '--warning-mode all' to show the individual deprecation warnings.
+See https://docs.gradle.org/5.4.1/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 1s
+5 actionable tasks: 5 up-to-date
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Analyze)
+[Pipeline] sh
++ ./gradlew sonarqube -Dsonar.host.url=http://sonarqube:9000
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+> Task :compileTestJava UP-TO-DATE
+> Task :sonarqube
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 6.0.
+Use '--warning-mode all' to show the individual deprecation warnings.
+See https://docs.gradle.org/5.4.1/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 12s
+4 actionable tasks: 1 executed, 3 up-to-date
+[Pipeline] sh
++ ./gradlew -i test jacocoTestReport
+Initialized native services in: /var/jenkins_home/.gradle/native
+The client will now receive all logging from the daemon (pid: 3348). The daemon log file: /var/jenkins_home/.gradle/daemon/5.4.1/daemon-3348.out.log
+Starting 5th build in daemon [uptime: 1 mins 19.048 secs, performance: 100%, non-heap usage: 39% of 268.4 MB]
+Using 12 worker leases.
+Closing daemon's stdin at end of input.
+Starting Build
+The daemon will no longer process any standard input.
+Settings evaluated using settings file '/var/jenkins_home/workspace/PetClinic/settings.gradle'.
+Projects loaded. Root project using build file '/var/jenkins_home/workspace/PetClinic/build.gradle'.
+Included projects: [root project 'spring-petclinic']
+
+> Configure project :
+Evaluating root project 'spring-petclinic' using build file '/var/jenkins_home/workspace/PetClinic/build.gradle'.
+All projects evaluated.
+Selected primary task 'test' from project :
+Selected primary task 'jacocoTestReport' from project :
+Tasks to be executed: [task ':compileJava', task ':processResources', task ':classes', task ':compileTestJava', task ':processTestResources', task ':testClasses', task ':test', task ':jacocoTestReport']
+:compileJava (Thread[Execution worker for ':',5,main]) started.
+
+> Task :compileJava UP-TO-DATE
+Caching disabled for task ':compileJava' because:
+  Build cache is disabled
+Skipping task ':compileJava' as it is up-to-date.
+:compileJava (Thread[Execution worker for ':',5,main]) completed. Took 0.748 secs.
+:processResources (Thread[Execution worker for ':',5,main]) started.
+
+> Task :processResources UP-TO-DATE
+Caching disabled for task ':processResources' because:
+  Build cache is disabled
+Skipping task ':processResources' as it is up-to-date.
+:processResources (Thread[Execution worker for ':',5,main]) completed. Took 0.016 secs.
+:classes (Thread[Execution worker for ':',5,main]) started.
+
+> Task :classes UP-TO-DATE
+Skipping task ':classes' as it has no actions.
+:classes (Thread[Execution worker for ':',5,main]) completed. Took 0.0 secs.
+:compileTestJava (Thread[Execution worker for ':',5,main]) started.
+
+> Task :compileTestJava UP-TO-DATE
+Caching disabled for task ':compileTestJava' because:
+  Build cache is disabled
+Skipping task ':compileTestJava' as it is up-to-date.
+:compileTestJava (Thread[Execution worker for ':',5,main]) completed. Took 0.194 secs.
+:processTestResources (Thread[Execution worker for ':',5,main]) started.
+
+> Task :processTestResources NO-SOURCE
+file or directory '/var/jenkins_home/workspace/PetClinic/src/test/resources', not found
+Skipping task ':processTestResources' as it has no source files and no previous output files.
+:processTestResources (Thread[Execution worker for ':',5,main]) completed. Took 0.002 secs.
+:testClasses (Thread[Execution worker for ':',5,main]) started.
+
+> Task :testClasses UP-TO-DATE
+Skipping task ':testClasses' as it has no actions.
+:testClasses (Thread[Execution worker for ':',5,main]) completed. Took 0.0 secs.
+:test (Thread[Execution worker for ':',5,main]) started.
+
+> Task :test UP-TO-DATE
+Caching disabled for task ':test' because:
+  Build cache is disabled
+Skipping task ':test' as it is up-to-date.
+:test (Thread[Execution worker for ':',5,main]) completed. Took 0.12 secs.
+:jacocoTestReport (Thread[Execution worker for ':',5,main]) started.
+
+> Task :jacocoTestReport UP-TO-DATE
+Caching disabled for task ':jacocoTestReport' because:
+  Build cache is disabled
+Skipping task ':jacocoTestReport' as it is up-to-date.
+:jacocoTestReport (Thread[Execution worker for ':',5,main]) completed. Took 0.022 secs.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 6.0.
+Use '--warning-mode all' to show the individual deprecation warnings.
+See https://docs.gradle.org/5.4.1/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 2s
+5 actionable tasks: 5 up-to-date
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy)
+[Pipeline] sh
++ ./mvnw spring-boot:run
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

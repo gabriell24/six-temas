@@ -70,3 +70,11 @@ publishing {
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/builds/reports/jacoco")
+    }
+}

@@ -71,14 +71,15 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-jacocoTestReport {
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport{
     reports {
         xml.enabled false
         csv.enabled false
-        html.destination file("${buildDir}/builds/reports/jacoco")
     }
-}
-
-test {
- finalizedBy jacocoTestReport
+    executionData = files('build/jacoco/test.exec')
 }

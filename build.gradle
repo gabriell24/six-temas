@@ -78,3 +78,7 @@ jacocoTestReport {
         html.destination file("${buildDir}/builds/reports/jacoco")
     }
 }
+
+test {
+ finalizedBy jacocoTestReport
+}
